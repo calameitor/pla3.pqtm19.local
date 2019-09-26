@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Exercici: PLA3_s1.A.Variables</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="jumbotron">
+    <h1><i class="fa fa-clipboard"></i> Exercici: PLA3_s1.A.Variables </h1>
+  </div>
+  <!-- .container -->
+  <div class="container">
+    <div class="row">
+      <p class="col-12">1. Creeu una variable anomenada carName, assigneu-li el valor a Volvo. Mostra el contingut a la consola. A part de la consola feu que la variable aparegui en un &lt;div id=”carNameBox”> en el moment que s’apliqui un
+        esdeveniment click sobre el boto
+        &lt;button id=”carNameBtn”>
+      </p>
+
+      <button class="btn btn-primary col-4" id="carNameBtn">car Name</button>
+      <div class=" border rounded col-6 offset-2">CarName:
+        <div class="d-inline" id="carNameBox"></div>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <p class="col-12">2. Creeu una variable anomenada x, assigneu-li el valor 50. Mostra el contingut per consola. Feu que la variable aparegui en un &lt;div id=”varXBox”> en el moment que s’apliqui un esdeveniment click sobre el boto &lt;button
+        id=”varXBtn”></p>
+      <button class="btn btn-primary col-4" id="varXBtn">x</button>
+      <div class=" border rounded col-6 offset-2">x:
+        <div class="d-inline" id="varXBox"></div>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <p class="col-12">3. Mostra la suma de 5 + 10, utilitzant dues variables: x3 i y3. Mostra el resultat en un contenidor amb id=”demo” que provingui d’un esdeveniment click d’un boto amb id=”btnDemo”.</p>
+      <button class="btn btn-primary col-4" id="btnDemo">x3+y3</button>
+      <div class=" border rounded col-6 offset-2">x3+y3:
+        <div class="d-inline" id="demo"></div>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <p class="col-12">4. Creeu una variable anomenada z4, assigneu-li x4 + y4, i mostreu el resultat en un quadre d'alerta. A part de la consola feu que la variable aparegui en un &lt;div id=”varZBox”> en el moment que s’apliqui un esdeveniment
+        click sobre el boto &lt;button
+        id=”varZBtn”>.
+      </p>
+      <button class="btn btn-primary col-4" id="varZBtn">z4</button>
+      <div class=" border rounded col-6 offset-2">z4:
+        <div class="d-inline" id="varZBox"></div>
+      </div>
+    </div>
+    <div class="row">
+      <p class="col-12">5. En una sola línia, declari tres variables amb els següents noms i valors:<br><br>firstName = "John"<br>lastName = "Doe"<br>edat = 35<br><br> Feu per que es mostrin concatenats en una llista no numerada dins d’un contenidor
+        amb id=”userBox”:</p>
+      <ul>
+        <li>Nombre:John</li>
+        <li>Apellidos: Doe</li>
+        <li>Edad: 35</li>
+      </ul>
+      <p class="col-12">
+        La llista s’ha de mostrar quan es fa un click al botó amb id=”userBtn”
+      </p>
+      <button class="btn btn-primary col-4" id="userBtn">Usuario</button>
+      <div class=" border rounded col-6 offset-2">Usuario:
+        <div class="d-inline" id="userBox"></div>
+      </div>
+    </div>
+  </div>
+  <!-- /.container -->
+
+
+  </div>
+  <!-- /.container -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script
+src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script
+src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+
+    // ------------------ Punt 1 -----------------------------
+    var carName = "Volvo";
+    document.getElementById("carNameBtn").onclick = function() {
+      console.log(carName);
+      document.getElementById("carNameBox").innerHTML = carName;
+    }
+    // ------------------ Punt 2 ----------------------------
+    var x = 50;
+    document.getElementById("varXBtn").onclick = function() {
+      console.log(x);
+      document.getElementById("varXBox").innerHTML = x;
+    }
+    // ----------------- Punt 3 -----------------------------
+    var x3 = 5;
+    var y3 = 10;
+    document.getElementById("btnDemo").onclick = function() {
+      document.getElementById("demo").innerHTML = x3 + y3;
+    }
+    // ----------------- Punt 4 -----------------------------
+    var x4 = 3;
+    var y4 = 7;
+    var z4 = x4 + y4;
+    document.getElementById("varZBtn").onclick = function() {
+      alert(z4);
+      document.getElementById("varZBox").innerHTML = z4;
+    }
+    // ----------------------- Punt 5 -------------------
+    var firstName = "John",
+      lastName = "Doe",
+      age = 35;
+    document.getElementById("userBtn").onclick = function() {
+      console.log("aqui");
+      var ul = "<ul>";
+      ul += "<li>Nombre: " + firstName + "</li>";
+      ul += "<li>Apellidos: " + lastName + "</li>";
+      ul += "<li>Edad: " + age + "</li>";
+      ul += "</ul>"
+      console.log(ul);
+      document.getElementById("userBox").innerHTML = ul;
+    }
+  </script>
+</body>
+
+</html>
