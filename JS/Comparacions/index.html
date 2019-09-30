@@ -1,93 +1,91 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport"
-content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Exercici: PLA3_s1.C: Comparacions</title>
-<link rel="stylesheet"
-href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-<link
-href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Exercici: PLA3_s1.A.Variables</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
+
 <body>
-<div class="jumbotron">
-<h1><i class="fa fa-clipboard"></i> Exercici: PLA3_s1.C: Comparacions</h1>
-</div>
-<div class="container-fluid">
-<div class="row">
-<div class="col-12">
-<form class="form" action="#">
-<div class="form-group">
-<label for="n1"> Número x</label>
-<input class="form-control" id="nx" type="text" value="1">
-</div>
-<div class="form-group">
-<label for="n1"> Número y</label>
-<input class="form-control" id="ny" type="text" value="1">
-</div>
-<div class="form-group">
-<label for="n1"> Edat</label>
-<input class="form-control" id="age" type="text" value="0">
-</div>
-<div class="form-group">
-<input type="button" class="btn btn-primary" id="calcular" value="Calcular">
-</div>
-</form>
-</div>
-<div class="col-12">
-<label for="resultado">Resultado</label>
-<ol>
-<li>Trieu l'operador de comparació correcte per que resulti true, quan x sigui major que y: <span class="text-danger" id="comparacio1"></span>
-</li>
-<li>
-Trieu l'operador de comparació correcte per que resulti true, quan x sigui igual a y: <span class="text-danger" id="comparacio2"></span>
-</li>
-<li>
-Trieu l'operador de comparació correcte per retornar un true, quan x NO sigui igual a y: <span class="text-danger" id="comparacio3"></span>
-</li>
-<li>
-Trieu l'operador condicional (if/else) correcte per reportar per consola "Too Young" si l'edat és inferior a 18, altrament, mostrar "Old enough": <span class="text-danger" id="comparacio4"></span>
-</li>
-</ol>
-</div>
-</div>
-</div>
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script
-src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script
-src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<script type="text/javascript">
-document.getElementById("calcular").onclick = function() {
-var x = document.getElementById("nx").value;
-var y = document.getElementById("ny").value;
-// ----------------------punt 1 ---------------------------
-var resultat1 = x > y;
-console.log("resultat1:" + resultat1);
-document.getElementById("comparacio1").innerHTML = resultat1;
-// ----------------------punt 2 --------------------------
-var resultat2 = x == y;
-console.log("resultat2:" + resultat2);
-document.getElementById("comparacio2").innerHTML = resultat2;
-// -------------------- punt 3 ----------------------------
-var resultat3 =( x != y);
-console.log("resultat3:" + resultat3);
-document.getElementById("comparacio3").innerHTML = resultat3;
-// -------------------- punt 4 ----------------------------
-var age = document.getElementById("age").value;
-/*if(age < 18){
-var resultat4 ="Too young";
-}else{
-var resultat4 =" Old enough ";
-}*/
-var age = document.getElementById("age").value;
-var resultat4 = (age < 18) ? "Too young" : "Old enough";
-console.log("resultat4:" +resultat4);
-document.getElementById("comparacio4").innerHTML = resultat4;
-};
-</script>
+  <div class="jumbotron">
+    <h1><i class="fa fa-clipboard"></i> Exercici: PLA3_s1.C: Comparacions</h1>
+  </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <form class="form" action="#">
+          <div class="form-group">
+            <label for="n1"> Número x</label>
+            <input class="form-control" id="nx" type="text" value="1">
+          </div>
+          <div class="form-group">
+            <label for="n1"> Número y</label>
+            <input class="form-control" id="ny" type="text" value="1">
+          </div>
+          <div class="form-group">
+            <label for="n1"> Edat</label>
+            <input class="form-control" id="age" type="text" value="0">
+          </div>
+          <div class="form-group">
+            <input type="button" class="btn btn-primary" id="calcular" value="Calcular">
+          </div>
+        </form>
+      </div>
+      <div class="col-12">
+        <label for="resultado">Resultado</label>
+        <ol>
+          <li>Trieu l'operador de comparació correcte per que resulti true, quan x sigui major que y: <span class="text-danger" id="comparacio1"></span>
+          </li>
+          <li>
+            Trieu l'operador de comparació correcte per que resulti true, quan x sigui igual a y: <span class="text-danger" id="comparacio2"></span>
+          </li>
+          <li>
+            Trieu l'operador de comparació correcte per retornar un true, quan x NO sigui igual a y: <span class="text-danger" id="comparacio3"></span>
+          </li>
+          <li>
+            Trieu l'operador condicional (if/else) correcte per reportar per consola "Too Young" si l'edat és inferior a 18, altrament, mostrar "Old enough": <span class="text-danger" id="comparacio4"></span>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script type="text/javascript">
+    document.getElementById("calcular").onclick = function() {
+      var x = document.getElementById("nx").value;
+      var y = document.getElementById("ny").value;
+      // ----------------------punt 1 ---------------------------
+      var resultat1 = x > y;
+      console.log("resultat1:" + resultat1);
+      document.getElementById("comparacio1").innerHTML = resultat1;
+      // ----------------------punt 2 --------------------------
+      var resultat2 = x == y;
+      console.log("resultat2:" + resultat2);
+      document.getElementById("comparacio2").innerHTML = resultat2;
+      // -------------------- punt 3 ----------------------------
+      var resultat3 = (x != y);
+      console.log("resultat3:" + resultat3);
+      document.getElementById("comparacio3").innerHTML = resultat3;
+      // -------------------- punt 4 ----------------------------
+      var age = document.getElementById("age").value;
+      /*if(age < 18){
+      var resultat4 ="Too young";
+      }else{
+      var resultat4 =" Old enough ";
+      }*/
+      var age = document.getElementById("age").value;
+      var resultat4 = (age < 18) ? "Too young" : "Old enough";
+      console.log("resultat4:" + resultat4);
+      document.getElementById("comparacio4").innerHTML = resultat4;
+    };
+  </script>
 </body>
+
 </html>

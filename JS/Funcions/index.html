@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Exercici: PLA3_s1.A.Variables</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="jumbotron">
+    <h1><i class="fa fa-clipboard"></i> Exercici: PLA3_s2.A: Funcions</h1>
+  </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <form class="form" action="#">
+          <div class="form-group">
+            <input type="button" class="btn btn-primary" id="btn1" value="Executar">
+          </div>
+        </form>
+      </div>
+      <div class="col-12">
+        <label>Accions</label>
+        <ol>
+          <li>Executeu la funció anomenada “funcio1” quan es produeixi el esdeveniment de click sobre el boto “btn1”.</li>
+          <li>
+            Creeu una funció anomenada "funcio2". Feu que la funció rebi un argument que sigui una cadena de text i que en retorni la mateixa cadena convertida a majúscules.
+          </li>
+          <li>
+            Feu que la funció anterior torni "Hola" dins d’un contenidor amb id=”demo” i que això succeeixi quan es produeix l’esdeveniment click sobre el boto amb id=”btn1”: <span class="text-danger" id="demo"></span>
+          </li>
+          <li>Feu que la funció que es defineix a continuació es mostri "Hola" en l'HTML intern d'un element amb la assignació de id=”caixa”. S’ha d’executar la funció quan es produeix l’esdeveniment de clic sobre el boto de id=”btn1”: <span
+              class="text-warning" id="caixa"></span></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script type="text/javascript">
+    function funcio1() {
+      alert("Hello World!");
+    }
+
+    function funcio2(cadena) {
+      console.log(cadena);
+      return cadena.toUpperCase();
+    }
+
+    function funcio3(strId, cadena) {
+      document.getElementById(strId).innerHTML = cadena;
+    }
+
+    document.getElementById("btn1").onclick = function() {
+      funcio1();
+      document.getElementById("demo").innerHTML = funcio2("Hola");
+      funcio3("caixa", 'Hola');
+    };
+  </script>
+</body>
+
+</html>
