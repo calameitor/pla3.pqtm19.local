@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Exercici: PLA3_s1.A.Variables</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="jumbotron">
+    <h1><i class="fa fa-clipboard"></i> Exercici: PLA3_s3.C: Expresions Regulars</h1>
+  </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <form class="form" action="#">
+          <div class="form-group">
+            <input type="button" class="btn btn-primary" id="btn1" value="Executar">
+          </div>
+        </form>
+      </div>
+      <div class="col-12">
+        <label>Accions</label>
+        <ol>
+          <li>Confeccionar una expressió regular que validi l'ingrés del nom d'un dia de la setmana, un espai i un nombre d'1 o 2 dígits. Mostreu el resultat de la validació quan es produeixi el esdeveniment de click sobre el boto “btn1” sobre una
+            caixa amb el id=“txt1Box”: <span class="" id="txt1Box"></span></li>
+        </ol>
+      </div>
+      <div class="col-12">
+        <form class="form" action="#">
+          <div class="form-group">
+            <label for="n1"> Dato</label>
+            <input class="form-control" id="n1" type="text">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script type="text/javascript">
+    document.getElementById("btn1").onclick = function() {
+      document.getElementById("txt1Box").className = "";
+      document.getElementById("txt1Box").innerHTML = "";
+      var cadena = document.getElementById("n1").value;
+      var patron = /[lunes|martes|miercoles|jueves|viernes|sabado|domingo]\s\d{1,2}$/;
+      if (patron.test(cadena)) {
+        document.getElementById("txt1Box").innerHTML = "El valor es correcte";
+        document.getElementById("txt1Box").className = "text-success";
+      } else {
+        document.getElementById("txt1Box").innerHTML =
+          "El valor no te el format correcte";
+        document.getElementById("txt1Box").className = "text-danger";
+      }
+    };
+  </script>
+</body>
+
+</html>

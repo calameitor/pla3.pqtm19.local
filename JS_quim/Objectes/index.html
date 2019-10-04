@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div id="caixa"></div>
+<div id="box"></div>
+<script type="text/javascript">
+ 
+ var objAlumne = {
+		 "nom"			: "José Maria",
+		 "cognoms"		: "Aznar" ,
+		 "edat" 		: 58 ,
+		 "descripcio" 	: function(idObj){
+			 var obj=document.getElementById(idObj);
+			 obj.innerHTML= "<ul>"+
+			 	"<li>Nom:" 		+ this.nom 		+"</li>" +
+			 	"<li>Cognoms:"  + this.cognoms 	+ "</li>"+
+			 	"<li>Edat:"		+ this.edat 	+ "</li>"+
+			 "</ul>";
+		}
+ };
+  // Mostra tot l'objecte
+  console.log(objAlumne);
+ //Mostra de l'objecte només la propietat nom
+  console.log(objAlumne.nom);
+  // Executar el mètode obj.descripcio("id")
+  objAlumne.descripcio("caixa") ;
+  // Recorrer un Objecte amb mètodes ( excloure els mètodes )
+  for (x in objAlumne){
+	  if(typeof(objAlumne[x])!='function'){
+	  document.getElementById("box").innerHTML+="<p>"+
+	  	x+":"+objAlumne[x]+"</p>";
+	  }
+  }
+  
+ </script>
+</body>
+</html>

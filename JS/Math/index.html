@@ -12,30 +12,33 @@
 
 <body>
   <div class="jumbotron">
-   <h1><i class="fa fa-clipboard"></i> Exercici: PLA3_s2.D: Math</h1>
+    <h1><i class="fa fa-clipboard"></i> Exercici: PLA3_s2.D: Math</h1>
   </div>
   <div class="container-fluid">
-   <div class="row">
-    <div class="col-12">
-     <form class="form" action="#">
-      <div class="form-group">
-       <input type="button" class="btn btn-primary" id="btn1" value="Executar">
+    <div class="row">
+      <div class="col-12">
+        <form class="form" action="#">
+          <div class="form-group">
+            <input type="button" class="btn btn-primary" id="btn1" value="Executar">
+          </div>
+        </form>
       </div>
-     </form>
+      <div class="col-12">
+        <label>Accions</label>
+        <ol>
+          <li>Utilitzeu el mètode Math correcte per crear un número aleatori. Mostreu el contingut quan es produeixi el esdeveniment de click sobre el boto “btn1” sobre una caixa amb el id=“math1Box”: <span class="text-danger" id="math1Box"></span>
+          </li>
+          <li>Utilitzeu el mètode Math correcte per tornar el nombre més gran d’una llista de valors com per exemple 10 ,16,5,100 i 20. Mostreu el resultat quan es produeixi el esdeveniment de click sobre el boto “btn1” sobre una caixa amb el
+            id=“math2Box”:
+            <span class="text-danger" id="math2Box"></span>
+          </li>
+          <li>Utilitzeu el mètode Math correcte per arrodonir un número 5.3 al número sencer més proper. Mostreu el resultat quan es produeixi el esdeveniment de click sobre el boto “btn1” sobre una caixa amb el id=“math3Box”:<span
+              class="text-danger" id="math3Box"></span></li>
+          <li>Utilitzeu el mètode Math correcte per obtenir l'arrel quadrada de 9. Mostreu el resultat quan es produeixi el esdeveniment de click sobre el boto “btn1” sobre una caixa amb el id=“math4Box”:<span class="text-danger"
+              id="math4Box"></span></li>
+        </ol>
+      </div>
     </div>
-    <div class="col-12">
-     <label>Accions</label>
-     <ol>
-      <li>Utilitzeu el mètode Math correcte per crear un número aleatori. Mostreu el contingut quan es produeixi el esdeveniment de click sobre el boto “btn1” sobre una caixa amb el id=“math1Box”: <span class="text-danger" id="math1Box"></span></li>
-      <li>Utilitzeu el mètode Math correcte per tornar el nombre més gran d’una llista de valors com per exemple 10 ,16,5,100 i 20. Mostreu el resultat quan es produeixi el esdeveniment de click sobre el boto “btn1” sobre una caixa amb el id=“math2Box”:
-       <span
-        class="text-danger" id="math2Box"></span>
-      </li>
-      <li>Utilitzeu el mètode Math correcte per arrodonir un número 5.3 al número sencer més proper. Mostreu el resultat quan es produeixi el esdeveniment de click sobre el boto “btn1” sobre una caixa amb el id=“math3Box”:<span class="text-danger" id="math3Box"></span></li>
-      <li>Utilitzeu el mètode Math correcte per obtenir l'arrel quadrada de 9. Mostreu el resultat quan es produeixi el esdeveniment de click sobre el boto “btn1” sobre una caixa amb el id=“math4Box”:<span class="text-danger" id="math4Box"></span></li>
-     </ol>
-    </div>
-   </div>
   </div>
 
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -43,30 +46,27 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   <script type="text/javascript">
-  // --------------------- punt 2 -------------------------------
-  var max = Math.max(10, 16, 5, 100, 20);
-  // ---------------------- punt 3 ----------------------------
-  var rounded = Math.round(5.6);
-  // ---------------------- punt 4 ----------------------------
-  var square = Math.sqrt(9);
+    // --------------------- punt 2 -------------------------------
+    var max = Math.max(10, 16, 5, 100, 20);
+    // ---------------------- punt 3 ----------------------------
+    var rounded = Math.round(5.6);
+    // ---------------------- punt 4 ----------------------------
+    var square = Math.sqrt(9);
 
-  document.getElementById("btn1").onclick = function() {
-   // --------------------- punt 1 ------------------------------
-   console.log(Math.random());
-   document.getElementById("math1Box").innerHTML = Math.random();
-   // --------------------- punt 2 ------------------------------
-   console.log(max);
-   document.getElementById("math2Box").innerHTML = max;
-   // ---------------------- punt 3 ----------------------------
-   console.log(rounded);
-   document.getElementById("math3Box").innerHTML = rounded;
-   // ---------------------- punt 4 ----------------------------
-   console.log(square);
-   document.getElementById("math4Box").innerHTML = square;
-  };
-
-
-
+    document.getElementById("btn1").onclick = function() {
+      // --------------------- punt 1 ------------------------------
+      console.log(Math.random());
+      document.getElementById("math1Box").innerHTML = Math.random();
+      // --------------------- punt 2 ------------------------------
+      console.log(max);
+      document.getElementById("math2Box").innerHTML = max;
+      // ---------------------- punt 3 ----------------------------
+      console.log(rounded);
+      document.getElementById("math3Box").innerHTML = rounded;
+      // ---------------------- punt 4 ----------------------------
+      console.log(square);
+      document.getElementById("math4Box").innerHTML = square;
+    };
   </script>
 </body>
 
