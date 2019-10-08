@@ -15,12 +15,12 @@
     <form action="servidor.php" method="post" id="registro">
       <fieldset class="border p-2 rounded position-relative">
         <div style="top:20px;right:10px;" class="text-danger small position-absolute">* Campo obligatorio</div>
-        <legend class="w-auto px-3 ">Registro</legend>
+        <legend class="w-auto px-2 ">Registro</legend>
 
         <div class="form-row">
           <div class="col-lg-4 col-md-6 mb-4 position-relative">
             <label for="registro_nombre">Nombre</label>
-            <input type="text" name="nombre" id="registro_nombre" class="form-control">
+            <input type="text" name="nombre" id="registro_nombre" class="form-control  ">
             <div class="invalid-feedback position-absolute">
               Por favor introduzca su nombre sin números.
             </div>
@@ -65,7 +65,7 @@
           <div class="col-lg-4  col-md-6 mb-4 position-relative">
             <label for="registro_apellidos">Pais</label>
             <select name="country" class="form-control" id="registro_country">
-              <option value="">--Elija una opcion --</option>
+              <option value="">-- Elija una opcion --</option>
               <option value="es">España</option>
               <option value="an">Andorra</option>
             </select>
@@ -77,14 +77,14 @@
             <label for="registro_email">Email</label>
             <input type="text" name="email" id="registro_email" class="form-control">
             <div class="invalid-feedback position-absolute">
-              Por favor introduzca su dirección de correo con un formato válido.
+              Por favor introduzca su e-Email con un formato válido.
             </div>
           </div>
           <div class="col-lg-4 col-md-6 mb-4 position-relative">
             <label for="registro_password">Contraseña</label>
             <input type="password" name="password" id="registro_password" class="form-control">
             <div class="invalid-feedback position-absolute">
-              La constraseña no tiene un formato válido.
+              formato no válido. min 8 cararteres + num + simbolos
             </div>
           </div>
           <div class="col-lg-4 col-md-12 mb-4 position-relative">
@@ -127,31 +127,118 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   <script type="text/javascript">
-   document.getElementsByid ("registro_enviar").onclick=funtion(evt){
-     //capturar event i pararlo
-     evt.preventdefault();
-     //var totok control de enviament
-     var totok=true;
+    document.getElementById("registro_enviar").onclick = function(evt) {
+      // Capturar Event i parar-lo
+      evt.preventDefault();
+      // var totOk control de enviament
+      var totOk = true;
 
-     //nombre
-     this.form.nombre.value= this.form.nombre.value.trim();
-     var string= this.form.nombre.value;
-     if(string==""){
-       this.form.nombre.classname+="is invalid";
-       totok=false;
+      // ---- Netejar classes 'is-invalid' i 'is-valid' ----
+      this.form.querySelectorAll("*").forEach(function(item) {
+        item.className = item.className.replace(/(is-valid|is-invalid)/g, '');
+      });
+
+      // ------------------------ nombre --------------------
+      this.form.nombre.value = this.form.nombre.value.trim();
+      var string = this.form.nombre.value;
+      var pattern = /\d/;
+      if (pattern.test(string) || string == "") {
+        this.form.nombre.className += ' is-invalid';
+        totOk = false;
+      } else {
+        this.form.nombre.className += ' is-valid';
+      }
+      // ------------------------ apellido --------------------
+      this.form.apellido.value = this.form.apellido.value.trim();
+      var string = this.form.apellido.value;
+      var pattern = /\d/;
+      if (pattern.test(string) || string == "") {
+        this.form.apellido.className += ' is-invalid';
+        totOk = false;
+      } else {
+        this.form.apellido.className += ' is-valid';
+      }
+      // ------------------------- Email -----------------------------------
+      this.form.email.value = this.form.email.value.trim();
+      var emailString = this.form.email.value;
+      var emailPattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/; // Format @
+      if (!emailPattern.test(emailString) || emailString == "") {
+        // ------------- Afegim la class 'is-invalid' a l'element
+        this.form.email.className += " is-invalid ";
+        totOk = false;
+      } else {
+        // ------------- Afegim la class 'is-valid' a l'element ---------------
+        this.form.email.className += " is-valid ";
+      }
+
+      // ------------------------- Password -----------------------------------
+      var passwordString = this.form.password.value;
+      var passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/g; // Format Password
+      if (!passwordPattern.test(passwordString) || passwordString == "") {
+        // ------------- Afegim la class 'is-invalid' a l'element
+        this.form.password.className += " is-invalid ";
+        totOk = false;
+      } else {
+        // ------------- Afegim la class 'is-valid' a l'element ---------------
+        this.form.password.className += " is-valid ";
+      }
 
 
-     }else {
-       this.form.nombre.classname+="is-Valid";
-     }
+      // -------------------- genero -------------------------
+      if (this.form.genero.value == '') {
+        this.form.genero.forEach(function(item) {
+          item.className += ' is-invalid';
+        });
+        totOk = false;
+      } else {
+        this.form.genero.forEach(function(item) {
+          item.className += ' is-valid';
+        });
+      }
 
-     if (totok==true) {
-       this.form.submit(); //disparar dd   el evento submit del form de este buttom
+      // -----------------------pais --------------------------
+      if (this.form.country.value == "") {
+        this.form.country.className += ' is-invalid';
+        totOk = false;
+      } else {
+        this.form.country.className += ' is-valid';
+      }
 
-     }
+      // ----------------------- Idiomas ------------------------
+      if (this.form.elements["language[]"].selectedIndex == -1) {
+        this.form.elements["language[]"].className += ' is-invalid';
+        totOk = false;
+      } else {
+        this.form.elements["language[]"].className += ' is-valid';
+      }
+      // ------------------------ Comentarios ---------------------------------
+      if (
+        this.form.comentarios.value == "" ||
+        this.form.comentarios.value.length > 120
+      ) {
+        // ------------- Afegim la class 'is-invalid' a l'element
+        this.form.comentarios.className += " is-invalid ";
+        totOk = false;
+      } else {
+        // ------------- Afegim la class 'is-valid' a l'element ---------------
+        this.form.comentarios.className += " is-valid ";
+      }
 
-   }
+      // ------------------------- Condiciones --------------------------------
+      if (this.form.condiciones.checked == false) {
+       // ------------- Afegim la class 'is-invalid' a l'element
+       this.form.condiciones.className += " is-invalid ";
+       totOk = false;
+      } else {
+       // ------------- Afegim la class 'is-valid' a l'element ---------------
+       this.form.condiciones.className += " is-valid ";
+      }
 
+      if (totOk == true) {
+        this.form.submit(); // Disparar l'event submit del form d'aques button
+        // o be enviar les dades via AJAX
+      }
+    }
   </script>
 </body>
 

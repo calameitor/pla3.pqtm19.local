@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Exercici: PLA3_s1.A.Variables</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="container">
+    <form action="#" novalidate>
+      <fieldset class="border p-2 rounded position-relative">
+        <legend class="w-auto px-3">Registro</legend>
+        <div style="top:20px;right:10px;" class="text-danger small position-absolute">* Campo obligatorio</div>
+        <div class="form-row">
+          <div class="col-md-6 col-lg-4 offset-lg-2 mb-5 position-relative">
+            <label for="registro_nombre">Nombre <small class="text-danger">*</small></label>
+            <input class="form-control " type="text" name="nombre" id="registro_nombre">
+            <div class="invalid-feedback position-absolute">
+              Por favor introduzca su nombre sin números ni caracteres especiales.
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4 mb-5 position-relative">
+            <label for="registro_apellidos">Apellido</label>
+            <input class="form-control " type="text" name="apellidos" id="registro_apellidos">
+            <div class="invalid-feedback position-absolute">
+              Por favor introduzca su apellido sin números ni caracteres especiales.
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col-md-6 col-lg-4 offset-lg-2 mb-5 position-relative">
+            <label for="registro_email">Email <small class="text-danger">*</small></label>
+            <input class="form-control " type="text" name="email" id="registro_email">
+            <div class="invalid-feedback position-absolute">
+              Por favor introduzca una dirección de correo válida.
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4 mb-5 position-relative">
+            <label for="registro_password">Password</label>
+            <input class="form-control " type="password" name="password" id="registro_password">
+            <div class="invalid-feedback position-absolute">
+              Por favor introduzca un formato de minimo 6 caracteres con una minúscula, una mayúscula y un dígito.
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col-12 col-lg-8 offset-lg-2 mb-5 position-relative">
+            <label for="registro_comentarios">Comentarios <small class="text-danger">*</small></label>
+            <textarea class="form-control " name="comentarios" id="registro_comentarios" rows="10"></textarea>
+            <div class="invalid-feedback position-absolute">
+              Por favor introduzca un comentário de máximo 50 caracteres.
+            </div>
+          </div>
+        </div>
+        <div class="form-row mt-2">
+          <div class="form-group col-12 col-lg-10 offset-lg-2">
+            <div class="form-check ">
+              <input class="form-check-input  " type="checkbox" value="y" id="invalidCheck" required>
+              <label class="form-check-label " for="invalidCheck">
+                Acepto las condiciones del servicio.
+              </label>
+              <div class="invalid-feedback">
+                Se requiere aceptar las condiciones del servicio.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-row mt-2">
+          <div class=" col-12 col-lg-10 offset-lg-2">
+            <button class="btn btn-primary" id="registro_enviar" type="submit">Enviar</button>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script type="text/javascript">
+    document.getElementById("registro_enviar").onclick = function(evt) {
+
+      // Capturar Event i parar-lo
+      evt.preventDefault();
+      // var totOk control de enviament
+      var totOk = true;
+
+      // Netejar classes de estils 'is-valid' o 'is-invalid'
+      document.getElementById('registro_nombre').className = document.getElementById('registro_nombre').className.replace(/(is-valid|is-invalid)/g, '');
+      document.getElementById('registro_apellidos').className = document.getElementById('registro_apellidos').className.replace(/(is-valid|is-invalid)/g, '');
+      document.getElementById('registro_email').className = document.getElementById('registro_email').className.replace(/(is-valid|is-invalid)/g, '');
+      document.getElementById('registro_password').className = document.getElementById('registro_password').className.replace(/(is-valid|is-invalid)/g, '');
+      document.getElementById('registro_comentarios').className = document.getElementById('registro_comentarios').className.replace(/(is-valid|is-invalid)/g, '');
+      document.getElementById('invalidCheck').className = document.getElementById('invalidCheck').className.replace(/(is-valid|is-invalid)/g, '');
+
+
+      // ----------------------- Validacions ----------------------------------
+
+      // -----------------------registro_nombre -------------------------------
+      document.getElementById('registro_nombre').value = document.getElementById('registro_nombre').value.trim();
+      var nameString = document.getElementById('registro_nombre').value;
+      var namePattern = /\d/g;
+      if (namePattern.test(nameString) || nameString == "") {
+        // ------------- afegim la class 'is-invalid' al element
+        document.getElementById('registro_nombre').className += " is-invalid ";
+        totOk = false;
+      } else {
+        document.getElementById('registro_nombre').className += " is-valid ";
+      }
+      // -----------------------registro_apellidos -------------------------------
+      document.getElementById('registro_apellidos').value = document.getElementById('registro_apellidos').value.trim();
+      var apellidosString = document.getElementById('registro_apellidos').value;
+      var apellidosPattern = /\d/g;
+      if (apellidosPattern.test(apellidosString) || apellidosString == "") {
+        // ------------- afegim la class 'is-invalid' al element
+        document.getElementById('registro_apellidos').className += " is-invalid ";
+        totOk = false;
+      } else {
+        document.getElementById('registro_apellidos').className += " is-valid ";
+      }
+      // -----------------------registro_email -------------------------------
+      document.getElementById('registro_email').value = document.getElementById('registro_email').value.trim();
+      var emailString = document.getElementById('registro_nombre').value;
+      var emailPattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+      if ((!emailPattern.test(emailString)) || emailString == "") {
+        // ------------- afegim la class 'is-invalid' al element
+        document.getElementById('registro_email').className += " is-invalid ";
+        totOk = false;
+      } else {
+        document.getElementById('registro_email').className += " is-valid ";
+      }
+
+      if (totOk) {
+        // this.form.submit(); ? o Podriem enviar les dades Via AJAX...
+      }
+
+    };
+
+    document.getElementById("registro_email").onblur = function() {
+      this.className = this.className.replace(/(is-valid|is-invalid)/g, '');
+      this.value = this.value.trim();
+      var emailString = this.value;
+      var emailPattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+      if ((!emailPattern.test(emailString)) || emailString == "") {
+        this.className += " is-invalid ";
+      } else {
+        this.className += " is-valid ";
+      }
+    };
+
+
+    document.getElementById("registro_nombre").onblur = function() {
+      this.className = this.className.replace(/(is-valid|is-invalid)/g, '');
+      this.value = this.value.trim();
+      var nombreString = this.value;
+      var nombrePattern = /\d/g;
+      if (nombrePattern.test(nombreString) || nombreString == "") {
+        this.className += " is-invalid ";
+      } else {
+        this.className += " is-valid ";
+      }
+    };
+  </script>
+</body>
+
+</html>
