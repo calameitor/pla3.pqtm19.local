@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div class="jumbotron">
+ <h1><i class="fa fa-clipboard"></i> Exemple: Cookie </h1>
+</div>
+<div class="container-fluid">
+ <div class="row">
+  <div class="col-12">
+  <p>
+   En el següent document web es designen quatre paràmetres de nom, valor, expiració i parts de ruta enviades a la funció 'CookieSet'. Les parts secure i domini no són definides. Si caduca rebrà valor buit, establirà la data de venciment a 9 mesos a partir
+   de la data actual i si la ruta rep un valor buit, el directori actual i els subdirectoris seran la ruta d'accés. toUTCString converteix la data en una cadena, utilitzant la convenció de temps universal.</p>
+  <pre>
+	function CookieSet (cName, cValue, cPath, cExpires) {
+		cvalue = encodeURIComponent(cValue);
+		if (cExpires == ""){
+			var cdate = new Date();
+			cdate.setMonth(cdate.getMonth() + 9);
+			cExpires = cdate.toUTCString();
+		}
+		if (cPath != ""){
+				cPath = ";Path=" + cPath;
+		}
+		document.cookie = cName + "=" + cValue +"expires=" + cExpires + cPath;
+	}
+
+	CookieSet("Name","George ","/","");
+	console.log('La cookie és:' + document.cookie);
+</pre>
+ </div>
+</div>
+</div>
+<script type="text/javascript">
+
+function CookieSet (cName, cValue, cPath, cExpires) {
+	cvalue = encodeURIComponent(cValue);
+	 if (cExpires == ""){
+			var cdate = new Date();
+			cdate.setMonth(cdate.getMonth() + 9);
+			cExpires = cdate.toUTCString();
+	}
+	if (cPath != ""){
+		cPath = ";Path=" + cPath;
+	}
+		document.cookie = cName + "=" + cValue +"expires=" + cExpires + cPath;
+}
+
+	CookieSet("Name","George ","/","");
+console.log('La cookie és:' + document.cookie);
+
+
+
+
+</script>
+
+
+
+</body>
+</html>

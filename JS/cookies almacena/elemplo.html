@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div class="jumbotron">
+ <h1><i class="fa fa-clipboard"></i> Exemple: Cookie </h1>
+</div>
+<div class="container-fluid">
+ <div class="row">
+  <div class="col-12">
+   <h1 style="color: red">Rebre dades reals de l'usuari i les emmagatzema en una cookie.</h1>
+   <hr>
+   <p>El següent document web rep dades reals de l'usuari i les emmagatzema en una cookie durant un any a partir de la data actual.</p>
+     <input class="form-control" type="text" id="name">
+   <button class="btn btn-primary" onclick="createCookie()">Crea Cookie</button>
+   <hr>
+   <pre>
+function createCookie(){
+
+	var visitor_name =document.getElementById("name").value;
+	var expr_date = new Date("December 30, 2018");
+	var cookie_date = expr_date.toUTCString();
+	final_cookie = "Name =" + encodeURIComponent(visitor_name) + ";expires_on = " + cookie_date;
+	document.cookie = final_cookie;
+	console.log(final_cookie);
+}
+</pre>
+</div>
+</div>
+</div>
+<script type="text/javascript">
+
+function createCookie(){
+     //var visitor_name = prompt("What's your name?","");
+ var visitor_name =document.getElementById("name").value;
+ var expr_date = new Date();
+expr_date.setMonth(expr_date.getMonth() + 12);
+
+var cookie_date = expr_date.toUTCString();
+final_cookie = "Name =" + encodeURIComponent(visitor_name) + ";expires = " + cookie_date;
+document.cookie = final_cookie;
+console.log(final_cookie);
+}
+
+
+
+
+</script>
+
+
+
+</body>
+</html>

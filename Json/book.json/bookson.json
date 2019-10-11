@@ -1,0 +1,25 @@
+{
+"Title": "el cuco perdido",
+"Author": "robert",
+"genero": "crimen",
+"detalles":{
+"editorial":"la flauta",
+"año de publicacion":"2015",
+"referencia": "25485325863",
+"lenguaje":"ingles",
+"pageina": 587
+},
+"precio":[
+  {
+    "tipo":"tapadura",
+    "precio":25.89
+  },
+  {
+    "tipo":"tapablanda",
+    "precio":12.98
+  }
+]
+
+
+
+}

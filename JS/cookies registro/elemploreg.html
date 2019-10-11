@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div class="jumbotron">
+ <h1><i class="fa fa-clipboard"></i> Exemple: Cookie</h1>
+</div>
+<div class="container-fluid">
+ <div class="row">
+  <div class="col-12">
+   <h1 style="color: red">Exemple Complert de JavaScript Cookie</h1>
+  <hr />
+  <p>En el següent document web, si un visitant registra el seu nom,
+    el seu nom es mostrarà si torna a aquesta pàgina durant els propers
+    6 mesos. Quan el visitant registra el seu nom, una galeta
+    s'emmagatzema al disc dur del visitant, per eliminar aquesta galeta click
+    <a href="javascript:deleteCookie('Nom');init();">aquí</a>,
+    vegeu el següent exemple.</p>
+  <hr>
+  <div id="box"></div>
+  <br>
+  </div>
+
+ </div>
+
+</div>
+<script type="text/javascript">
+
+
+function createCookie(name,value,expires,path,domain) {
+
+		var curdate = new Date();
+		curdate.setMonth(curdate.getMonth() + expires);
+		var cookieExpires = curdate.toUTCString();
+		var txtCookie = name+"=" + encodeURIComponent(value) + "; expires= " + cookieExpires + ";path="+path+"; domain="+domain;
+		document.cookie = txtCookie;
+		console.log(txtCookie);
+	}
+
+	function deleteCookie(name){
+		createCookie(name,"",0,"","");
+	}
+
+	function getCookie(name) {
+		var search_cookie = name + "="
+		if (document.cookie.length > 0) {
+			start_position = document.cookie.indexOf(search_cookie)
+			if (start_position != -1) {
+				start_position += search_cookie.length
+				end_position = document.cookie.indexOf(";", start_position)
+				if (end_position == -1) end_position = document.cookie.length;
+				return (decodeURIComponent(document.cookie.substring( start_position, end_position)))
+			}
+		}
+	}
+
+	function readCookie(name) {
+		var nameEQ = name + "=";
+		var ca = document.cookie.split(';');
+		for (var i = 0; i < ca.length; i++) {
+			var c = ca[i];
+			while (c.charAt(0) == ' ')
+				c = c.substring(1, c.length);
+			if (c.indexOf(nameEQ) == 0)
+				return c.substring(nameEQ.length, c.length);
+		}
+		return null;
+	}
+
+	function init(){
+		console.log(document.cookie);
+		var username = getCookie("Nom");
+		 //var username = readCookie("mycookie");
+		 if (username) {
+		  document.getElementById("box").innerHTML="Welcome Back, "+ username;
+		 }
+		 if (username == null) {
+			 var innerHTML="";
+			 innerHTML='You haven\'t been here in the last six months...';
+			 innerHTML+='When you return to this page in next nine months, ';
+			 innerHTML+='your name will be displayed...with Welcome.';
+			 innerHTML+='<form onsubmit="return false" >';
+			 innerHTML+='<p>Enter your name: </p>';
+			 innerHTML+='<input type="text" name="username" size="40">';
+			 innerHTML+='<input type="button" value="Register" ';
+			 innerHTML+=' onClick="createCookie(\'Nom\',this.form.username.value,6,\'\',\'\'); history.go(0)" >';
+			 innerHTML+='</form>';
+			 document.getElementById("box").innerHTML=innerHTML;
+			 }
+	}
+init();
+
+
+
+</script>
+
+
+
+</body>
+</html>
