@@ -9,8 +9,43 @@
     <title>Practica Validació formulari</title>
 </head>
 <body>
+  <div class="container">
+		<div class="row">
+		<div class="col-12">
+			<div class="card ">
+				<div class="card-header">
+					<div class="row">
+						<div class="col-6">Titol</div>
+						<div class="col-6">objBook.Title</div>
+						<div class="col-6">Autor</div>
+						<div class="col-6">objBook.Author</div>
+						<div class="col-6">Genere</div>
+						<div class="col-6">objBook.Genre</div>
+					</div>
+				</div>
+				<div class="card-body">
+					<div class="row">
+						<div class="col-3">Idioma</div>
+						<div class="col-3">objBook.Detail.Language</div>
+						<div class="col-3">Pàgines</div>
+						<div class="col-3">objBook.Detail.Pages</div>
+						<div class="col-3">Any Pub.</div>
+						<div class="col-3">objBook.Detail.Publication_Year</div>
+						<div class="col-3">ISBN</div>
+						<div class="col-3">objBook.Detail.ISBN-13</div>
+					</div>
+				</div>
+				<div class="card-footer">
+
+				</div>
+			</div>
+
+			</div>
+		</div>
+	</div>
 	<div id="boxBook"></div>
 	<button id="btnBook">Carregar</button>
+
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>
@@ -18,7 +53,7 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" ></script>
 	<script type="text/javascript">
 	var xhr;
-	
+
 	var bookTmpl=`<div class="container">
 		<div class="row">
 		<div class="col-12">
@@ -46,14 +81,14 @@
 					</div>
 				</div>
 				<div class="card-footer">
-				
+
 				</div>
 			</div>
-			
+
 			</div>
 		</div>
 	</div>`;
-	
+
 	document.getElementById("btnBook").onclick=function(){
 		// Crear instancia de l'objecte XMLHttpRequest sobre la variable xhr
 		if (window.XMLHttpRequest) { // Mozilla, Safari, ...
@@ -61,7 +96,7 @@
 		} else if (window.ActiveXObject) { // IE
 			xhr = new ActiveXObject("Microsoft.XMLHTTP");
 		}
-		
+
 		// Definir la funció de callBack()
 		xhr.onreadystatechange = function(){
 			if (xhr.readyState == 4 &&  xhr.status == 200 ) {
@@ -75,7 +110,7 @@
 				bookTmpl=bookTmpl.replace(/objBook\.Detail\.Publication_Year/g,objBook.Detail.Publication_Year);
 				bookTmpl=bookTmpl.replace(/objBook\.Detail\.ISBN-13/g,objBook.Detail["ISBN-13"]);
 				document.getElementById('boxBook').innerHTML=bookTmpl;
-				
+
 				var cadena="<table class=\"table \">";
 				for(var i=0 ; i< objBook.Price.length; i++){
 					cadena+="<tr>";
@@ -88,18 +123,18 @@
 			}else if(xhr.readyState == 4 &&  xhr.status == 404){
 				alert('Ho sentim el servidor sembla que no es troba disponible');
 			}
-			
+
 		};
-		
-		
+
+
 		// Definim els parametres de sol·licitus HTTP
 		xhr.open('GET','http://pla3.pqtm19.local/JSON/book.php',true);
 		xhr.setRequestHeader("Authorization", "Basic "+ btoa("pepe:12345"));
 		// Iniciem la sol·licitud
 		xhr.send(null);
 	}
-	
-	
+
+
 	</script>
 </body>
 </html>
