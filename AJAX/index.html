@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <table id="tblComunidades">
+    <thead>
+      <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Age</th>
+      </tr>
+      <tr>
+        <td>Eve</td>
+        <td>Jackson</td>
+        <td>94</td>
+      </tr>
+    </thead>
+  </table>
+
+
+
+  <script type="text/javascript">
+    var xhr;
+    if (window.XMLHttpRequest) {
+      // Navegadores que siguen los estándares
+      xhr = new XMLHttpRequest();
+    } else if (window.ActiveXObject) {
+      // Navegadores obsoletos
+      xhr = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+
+    xhr.onreadystatechange = function() {
+      //console.log("readyState:" + xhr.readyState);
+      //console.log("status:" + xhr.status);
+      if (xhr.readyState == 4 && xhr.status == 200) {
+        //console.log(xhr.responseText);
+        var objecomuidades = JSON.parse(xhr.responseText);
+        //console.log(objecomuidades);
+        for(var i=0; i<objecomuidades.records.length;i++ ){
+          var cadena="<th>";
+            cadena+="<td>"+objecomuidades.records[i].id+"</td>";
+            cadena+="<td>"+objecomuidades.records[i].nombre+"</td>";
+            cadena+="<td>"<button onclick="editar"('+objecomuidades.records[i].id+')"</td>";
+            </th>"
+        }
+      }
+    }
+    xhr.open('GET', 'http://app.cifo.local/api/private/cifo/comunidades/', true);
+    xhr.setRequestHeader("authorization", "Basic " + btoa("admin@cifo.cat:12345"));
+    xhr.send(null);
+  </script>
+
+
+</body>
+
+</html>

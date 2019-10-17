@@ -59,6 +59,7 @@ function getCookie(name) {
  * @param string path Ruta de validez de la Cookie; Ejemplo '/'
  * @returns
  */
+ 
 function deleteCookie(name, path) {
   createCookie(name, "", -1, path, "");
 }
@@ -81,7 +82,7 @@ for (x in objLanguage) {
     '">' +
     objLanguage[x].name +
     "</option>";
-  document.getElementById("selLanguages").innerHTML += cadena;
+  document.getElementById("selLanguages").innerHTML+= cadena;
 }
 
 var cookieLang = getCookie("lang");
